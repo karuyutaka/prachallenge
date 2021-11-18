@@ -1,0 +1,54 @@
+@startuml
+
+hide circle
+skinparam linetype ortho
+
+entity "order" {
+  + id [PK]
+  --
+  customer_id [FK]
+  order_date
+  order_number
+}
+
+entity "order_detail" {
+  + id [PK]
+  --
+  order_id [FK]
+  menu_id[FK]
+  quantity
+  is_wasabi
+}
+
+entity "menu" {
+  + id [PK]
+  --
+  price
+}
+
+entity "payment" {
+  + id [PK]
+  --
+  order_id [FK]
+  subtotal
+  tax
+  total
+  change　
+}
+
+entity "customer" {
+  + id [PK]
+  --
+  firstname
+  lastname
+  phone_number
+}
+
+order --|{ order_detail
+menu  --|{ order_detail
+order --|{ payment
+customer --|{ order
+
+
+
+@enduml

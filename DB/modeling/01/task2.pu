@@ -1,0 +1,61 @@
+@startuml
+
+hide circle
+skinparam linetype ortho
+
+entity "order" {
+  + id [PK]
+  --
+  customer_id [FK]
+  order_date
+  order_number
+}
+
+entity "order_detail" {
+  + id [PK]
+  --
+  order_id [FK]
+  menu_id[FK]
+  quantity
+  is_wasabi
+  is_large
+}
+
+entity "menu" {
+  + id [PK]
+  --
+  price
+}
+
+entity "payment" {
+  + id [PK]
+  --
+  order_id [FK]
+  subtotal
+  tax
+  total
+  change　
+}
+
+entity "customer" {
+  + id [PK]
+  --
+  firstname
+  lastname
+  phone_number
+}
+
+order --|{ order_detail
+menu  --|{ order_detail
+order --|{ payment
+customer --|{ order
+
+@enduml
+
+' シャリの大小を選択できるようにorder_detailにis_largeフラグを追加
+' 0でシャリサイズ変更なし1でシャリサイズ大
+
+' 寿司ネタが毎月何個売れているのか知る必要が生じました。どのようにテーブル設計をするべきでしょうか
+' orderテーブルにはorder_dateがあるので月毎にまとめる。
+' order_detailテーブルにあるmenu_idを使用するとメニューが取得出来るので
+' あとはorder_detailテーブルのquantityを使用して個数を数えればいい。
