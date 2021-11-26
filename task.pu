@@ -1,0 +1,71 @@
+@startuml
+
+hide circle
+skinparam linetype ortho
+
+entity "users" {
+  + id [PK]
+  --
+  name
+  email
+  password
+}
+
+entity "workspaces_users" {
+  + id [PK]
+  # workspace_id [FK]
+  # user_id [FK]
+  --
+}
+
+entity "workspaces" {
+  + id [PK]
+  --
+  name
+}
+
+entity "chanels" {
+  + id [PK]
+  # workspace_id [FK]
+  --
+  name
+}
+
+entity "chanels_users" {
+  + id [PK]
+  # channel_id [FK]
+  # user_id [FK]
+  --
+}
+
+entity "messages" {
+  + id [PK]
+  # channel_id [FK]
+  # user_id [FK]
+  --
+  content
+  created_at
+}
+
+entity "thread_messages" {
+  + id [PK]
+  # channel_id [FK]
+  # user_id [FK]
+  --
+  content
+  created_at
+}
+
+
+
+
+
+workspaces ||-d-|{ chanels
+chanels ||-d-|{ messages
+messages }-d-o{ thread_messages
+workspaces ||-l-|{ workspaces_users
+chanels ||-l-|{ chanels_users
+users ||-r-|{ workspaces_users
+users ||--|{ chanels_users
+users ||--o{ messages
+@enduml
