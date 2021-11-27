@@ -62,7 +62,7 @@ entity "thread_messages" {
 
 workspaces ||-d-|{ chanels
 chanels ||-d-|{ messages
-messages }-d-o{ thread_messages
+messages ||-d-o{ thread_messages
 workspaces ||-l-|{ workspaces_users
 chanels ||-l-|{ chanels_users
 users ||-r-|{ workspaces_users
