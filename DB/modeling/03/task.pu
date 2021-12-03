@@ -15,7 +15,7 @@ entity "users" {
 
 entity "documents" {
   + id [PK]
-  # document_id [FK]
+  # folder_id [FK]
   --
   name
   created_at
