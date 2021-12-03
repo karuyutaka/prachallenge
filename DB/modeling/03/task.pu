@@ -1,0 +1,60 @@
+@startuml
+
+hide circle
+skinparam linetype ortho
+
+entity "users" {
+  + id [PK]
+  --
+  name
+  email
+  password
+}
+
+
+
+entity "documents" {
+  + id [PK]
+  # document_id [FK]
+  --
+  name
+  created_at
+  text_type
+}
+
+entity "documents_users" {
+  + id [PK]
+  # document_id [FK]
+  # user_id [FK]
+  --
+}
+
+entity "treetable" {
+  + id [PK]
+  ancestor
+  descendant
+  path_lengths
+  --
+}
+
+entity "folders_users" {
+  + id [PK]
+  # folder_id [FK]
+  # user_id [FK]
+  --
+}
+
+entity "folders" {
+  + id [PK]
+  --
+  name
+}
+
+
+folders ||-d-|{ documents
+folders ||-d-|{ treetable
+folders ||-l-|{ folders_users
+documents ||-l-|{ documents_users
+users ||-r-|{ folders_users
+users ||--|{ documents_users
+@enduml
