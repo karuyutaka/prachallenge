@@ -1,0 +1,48 @@
+@startuml
+
+hide circle
+skinparam linetype ortho
+
+entity "users" {
+  + id [PK]
+  --
+  name
+  email
+  password
+}
+
+
+
+entity "task" {
+  + id [PK]
+  # user_id [FK]
+  --
+  name
+  comment
+  is_done
+  assigned_user
+  update_at
+  created_at
+}
+
+entity "reminders" {
+  + id [PK]
+  # task_id [FK]
+  # reminder_type_id [FK]
+  --
+  run_at
+}
+
+entity "reminder_types" {
+  + id [PK]
+  --
+  reminder_type
+}
+
+task ||-d-|{ reminders
+' folders ||-d-|{ treetable
+reminders ||-l-|{ reminder_types
+' documents ||-l-|{ documents_users
+' users ||-r-|{ folders_users
+users ||--|{ task
+@enduml
