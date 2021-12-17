@@ -1,0 +1,35 @@
+@startuml
+
+hide circle
+skinparam linetype ortho
+
+entity "users" {
+  + id [PK]
+  --
+  name
+  email
+  password
+}
+
+
+
+entity "blogs" {
+  + id [PK]
+  # user_id [FK]
+  --
+  content
+  inserted_at
+  updated_at
+}
+
+entity "edit_historys" {
+  + id [PK]
+  # blog_id [FK]
+  --
+  content
+  inserted_at
+}
+
+blogs ||-d-|{ edit_historys
+users ||--|{ blogs
+@enduml
