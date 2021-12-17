@@ -17,6 +17,7 @@ entity "blogs" {
   + id [PK]
   # user_id [FK]
   --
+  blogs_id
   content
   version
   inserted_at
