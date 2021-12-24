@@ -1,0 +1,30 @@
+' - 交差テーブルを作成する
+
+@startuml
+
+hide circle
+skinparam linetype ortho
+
+entity "posts" {
+  + id [PK]
+  --
+  text
+}
+
+
+entity "posts_tags" {
+  + id [PK]
+  --
+  post_id[FK]
+  tag_id[FK]
+}
+
+entity "tags" {
+  + id [PK]
+  --
+  name
+}
+
+tags ||-l-|{ posts_tags
+posts ||--|{ posts_tags
+@enduml
