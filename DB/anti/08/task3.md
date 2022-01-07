@@ -1,0 +1,2 @@
+- ECサイトの開発
+    -  「user」テーブルと「orders」テーブルと「address」テーブルが存在しており、addressテーブルにはtypeカラムが存在する。

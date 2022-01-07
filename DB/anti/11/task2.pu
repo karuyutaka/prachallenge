@@ -1,0 +1,21 @@
+@startuml
+
+hide circle
+skinparam linetype ortho
+
+entity Students {
+  + id [PK]
+  --
+  name
+  # status_id [FK]
+}
+
+entity Status {
+  + id [PK]
+  --
+  value
+}
+
+Students }o--|| Status
+
+@enduml

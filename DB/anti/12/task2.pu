@@ -1,0 +1,21 @@
+@startuml
+
+/'
+  履歴テーブルを持たせる
+  要件によってはその辺りは柔軟に対応する
+'/
+entity "user" {
+  + id [PK]
+  name
+  
+}
+
+entity "user_history" {
+  + id [PK]
+  --
+  name
+}
+
+
+user ||..o{ user_history
+@enduml

@@ -1,0 +1,40 @@
+@startuml
+
+/'
+  messages
+'/
+entity "customers" {
+  + id [PK]
+  email
+  phoneNumber
+  text
+}
+
+entity "calls" {
+  + id [PK]
+  --
+  customer_id[FK]
+  callNote
+  callAt
+}
+
+entity "mets" {
+  + id [PK]
+  --
+  customer_id[FK]
+  metNote
+  metAt
+}
+
+entity "close" {
+  + id [PK]
+  --
+  customer_id[FK]
+  closedAt
+}
+
+
+customers ||..o{ calls
+customers ||..o{ mets
+customers ||..o{ close
+@enduml

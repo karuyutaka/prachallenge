@@ -1,0 +1,20 @@
+@startuml
+
+/'
+  messages
+'/
+entity "messages" {
+  + id [PK]
+  text
+}
+
+entity "message_path" {
+  + id [PK]
+  --
+  #parent_message_id
+  #child_message_id
+}
+
+
+messages ||..o{ message_path
+@enduml
