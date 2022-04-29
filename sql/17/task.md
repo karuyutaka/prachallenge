@@ -126,3 +126,5 @@ hoge F
 - 複合インデックスには順序があるため単独で検索条件に利用されるカラムを先頭にする必要がある。
 今回の場合だとCREATE INDEX employees_name ON employees (last_name, first_name)
 でインデックスを張る必要がある
+
+参考サイト　https://nishinatoshiharu.com/overview-multicolumn-indexes/
